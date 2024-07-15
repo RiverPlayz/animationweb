@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quingbao Color Change</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #282c34;
+            font-family: 'Ubuntu', sans-serif;
+            color: white;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="text">Quingbao</div>
+
+<script>
+    const textElement = document.getElementById('text');
+    const colors = ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'cyan', 'magenta'];
+    let colorIndex = 0;
+
+    setInterval(() => {
+        colorIndex = (colorIndex + 1) % colors.length;
+        textElement.style.color = colors[colorIndex];
+    }, 1000);
+</script>
+
+</body>
+</html>
