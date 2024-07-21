@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+  <meta charset=&quot;UTF-8&quot;>
+  <meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+  <title>Walking Mario (Forever ASCII Art)</title>
+  <style>
+    body {
+      font-family: Ubuntu, monospace;
+      /* Changed color to black for error message */
+      color: black;
+      background-color: orange;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Added a new style for the error message */
+    #error-message {
+      font-size: 2em; /* Increase font size for emphasis */
+      margin-bottom: 1em; /* Add space below error message */
+    }
+  </style>
+</head>
+<body>
+  <div id=&quot;error-message&quot;>Error. Please try again.</div>
+
+  <pre id=&quot;mario&quot;></pre>
+  <script>
+    const marioElement = document.getElementById(&quot;mario&quot;);
+    const walkFrames = [
+      &quot;&nbsp;O\n /|\ \n/ \ &quot;, // Left foot forward
+      &quot;&nbsp;O\n \\|/\n \\/&nbsp;&quot;, // Right foot forward
+    ];
+    let currentFrame = 0;
+
+    function animateMario() {
+      marioElement.textContent = walkFrames[currentFrame];
+      currentFrame = (currentFrame + 1) % walkFrames.length; // Loop through frames
+      // Call requestAnimationFrame for smoother animation
+      requestAnimationFrame(animateMario);
+    }
+
+    // Call animateMario() to start the animation with 4ms interval
+    setInterval(animateMario, 4);
+  </script>
+</body>
+</html>
