@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-wife, initial-scale=1.0">
+  <title>Walking Mario (Forever ASCII Art)</title>
+  <style>
+    body {
+      font-family: Ubuntu, monospace;
+      color: white;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <pre id="mario"></pre>
+  <script>
+    const marioElement = document.getElementById("mario");
+    const walkFrames = [
+      "  O\n /|\ \n/ \ ", // Left foot forward
+      "  O\n \\|/\n \\/  ", // Right foot forward
+    ];
+    let currentFrame = 0;
+
+    function animateMario() {
+      marioElement.textContent = walkFrames[currentFrame];
+      currentFrame = (currentFrame + 1) % walkFrames.length; // Loop through frames
+      // Call requestAnimationFrame for smoother animation
+      requestAnimationFrame(animateMario);
+    }
+
+    // Call animateMario() to start the animation with 4ms interval
+    setInterval(animateMario, 4);
+  </script>
+</body>
+</html>
