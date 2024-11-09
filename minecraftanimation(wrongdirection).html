@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minecraft World</title>
+    <style>
+        .block {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .bedrock {
+            background-color: #444;
+        }
+
+        .dirt {
+            background-color: #8B4513;
+        }
+
+        .grass {
+            background-color: #7CFC00;
+        }
+    </style>
+</head>
+<body>
+    <div id="world"></div>
+    <script>
+        // JavaScript to dynamically create the world
+        const world = document.getElementById('world');
+        let depth = 10; // Starting depth
+
+        function generateWorld() {
+            world.innerHTML = ''; // Clear previous world
+
+            for (let y = 0; y < 15; y++) {
+                for (let x = 0; x < 20; x++) {
+                    let block;
+                    if (y < depth) {
+                        block = 'bedrock';
+                    } else if (y < depth + 5) {
+                        block = 'dirt';
+                    } else {
+                        block = 'grass';
+                    }
+                    world.innerHTML += `<div class="block ${block}"></div>`;
+                }
+                world.innerHTML += '<br>';
+            }
+
+            // Gradually decrease depth to reveal more layers
+            depth--;
+            if (depth > 0) {
+                setTimeout(generateWorld, 100); // Adjust delay as needed
+            }
+        }
+
+        generateWorld();
+    </script>
+</body>
+</html>
